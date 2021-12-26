@@ -49,6 +49,16 @@ class MainActivity : AppCompatActivity() {
         val buttonMultiply = findViewById<Button>(R.id.buttonMultiply)
         val buttonMinus = findViewById<Button>(R.id.buttonMinus)
         val buttonPlus = findViewById<Button>(R.id.buttonPlus)
+        val buttonNeg: Button = findViewById<Button>(R.id.buttonNeg)
+        val buttonInv: Button = findViewById<Button>(R.id.buttonInv)
+        val buttonAC: Button = findViewById<Button>(R.id.buttonC)
+
+        val clearNum = View.OnClickListener { v ->
+            val b = v as Button
+            newNumber.setText("")
+        }
+
+        buttonAC.setOnClickListener(clearNum)
 
         val listener = View.OnClickListener { v ->
             val b = v as Button
@@ -66,6 +76,36 @@ class MainActivity : AppCompatActivity() {
         button8.setOnClickListener(listener)
         button9.setOnClickListener(listener)
         buttonDot.setOnClickListener(listener)
+
+        buttonNeg.setOnClickListener { view ->
+            val value = newNumber.text.toString()
+            if (value.isEmpty()) {
+                newNumber.setText("-")
+            } else {
+                try {
+                    var doubleValue = value.toDouble()
+                    doubleValue *= -1
+                    newNumber.setText(doubleValue.toString())
+                } catch (e: NumberFormatException) {
+                    newNumber.setText("")
+                }
+            }
+        }
+
+        buttonInv.setOnClickListener { view ->
+            val value = newNumber.text.toString()
+            if (value.isEmpty()) {
+                newNumber.setText("")
+            } else {
+                try {
+                    var doubleValue = value.toDouble()
+                    doubleValue = 1 / doubleValue
+                    newNumber.setText(doubleValue.toString())
+                } catch (e: NumberFormatException) {
+                    newNumber.setText("")
+                }
+            }
+        }
 
         val opListener = View.OnClickListener { v ->
             val op = (v as Button).text.toString()
