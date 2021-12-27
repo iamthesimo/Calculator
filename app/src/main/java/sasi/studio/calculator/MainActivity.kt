@@ -51,19 +51,26 @@ class MainActivity : AppCompatActivity() {
         val buttonPlus = findViewById<Button>(R.id.buttonPlus)
         val buttonNeg: Button = findViewById<Button>(R.id.buttonNeg)
         val buttonInv: Button = findViewById<Button>(R.id.buttonInv)
-        val buttonAC: Button = findViewById<Button>(R.id.buttonC)
+        val buttonAC: Button = findViewById<Button>(R.id.buttonAC)
+        val buttonC: Button = findViewById<Button>(R.id.buttonC)
 
-        val clearNum = View.OnClickListener { v ->
-            val b = v as Button
+        val clearNum = View.OnClickListener {
             newNumber.setText("")
         }
 
+        val cancChar = View.OnClickListener {
+            newNumber.setText(newNumber.text.dropLast(newNumber.length()))
+        }
+
         buttonAC.setOnClickListener(clearNum)
+        buttonC.setOnClickListener(cancChar)
 
         val listener = View.OnClickListener { v ->
             val b = v as Button
             newNumber.append(b.text)
         }
+
+
 
         button0.setOnClickListener(listener)
         button1.setOnClickListener(listener)

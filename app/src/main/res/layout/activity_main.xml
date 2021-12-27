@@ -14,7 +14,7 @@
         android:minWidth="48dp"
         android:minHeight="48dp"
         android:text="Ac"
-        android:textAllCaps="false"
+        android:textAllCaps="true"
         android:textSize="12sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonMinus"
         app:layout_constraintStart_toEndOf="@+id/buttonMinus" />
