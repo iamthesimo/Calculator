@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         val buttonMultiply = findViewById<Button>(R.id.buttonMultiply)
         val buttonMinus = findViewById<Button>(R.id.buttonMinus)
         val buttonPlus = findViewById<Button>(R.id.buttonPlus)
+
         val buttonNeg: Button = findViewById<Button>(R.id.buttonNeg)
         val buttonInv: Button = findViewById<Button>(R.id.buttonInv)
         val buttonAC: Button = findViewById<Button>(R.id.buttonAC)
@@ -69,8 +70,6 @@ class MainActivity : AppCompatActivity() {
             val b = v as Button
             newNumber.append(b.text)
         }
-
-
 
         button0.setOnClickListener(listener)
         button1.setOnClickListener(listener)
@@ -145,7 +144,7 @@ class MainActivity : AppCompatActivity() {
             when (pendingOperation) {
                 "=" -> operand1 = value
                 "/" -> operand1 = if (value == 0.0) {
-                    Double.NaN // handle division by 0
+                    Double.NaN   // handle attempt to divide by zero
                 } else {
                     operand1!! / value
                 }
